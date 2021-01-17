@@ -1,0 +1,41 @@
+{
+
+  "length" : 3,
+  "width" : 2,
+  "height" : 5,
+  "readyToRenovation" : true,
+  "haveBalcony" : true,
+  "numberOfWindows" : 1,
+
+  "sofa" : {
+    "sofaLength" : 3,
+    "sofaWidth" : 1,
+    "sofaColor" : "Black",
+    "sofaCloth" : "leather"
+  },
+
+  "armchair" : {
+    "armchairColor" : "Black",
+    "armchairCloth" : "leather",
+    "armchairLength" : 1,
+    "armchairWidth" : 2
+  },
+
+  "computer" : {
+    "monitorDiagonal" : 53.2,
+    "yearOfIssue" : 2020
+  },
+
+  "table" :{
+    "tableLength" : 3,
+    "tableWidth" : 2,
+    "tableColor" : "Black",
+    "tableMaterial" : "Wood"
+  },
+
+  "tv" : {
+    "TVDiagonal" : 37.2
+  }
+
+}
+ 
