@@ -1,3 +1,7 @@
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public class Room {
 
     int length;
@@ -6,13 +10,6 @@ public class Room {
     boolean readyToRenovation;
     boolean haveBalcony;
     int numberOfWindow;
-    static int longestWall;
-
-
-
-    public static int getLongestWall() {
-        return longestWall;
-    }
 
     public Room(int length, int width, int height, boolean readyToRenovation, boolean haveBalcony, int numberOfWindow) {
         this.length = length;
@@ -23,73 +20,104 @@ public class Room {
         this.numberOfWindow = numberOfWindow;
     }
 
-    Sofa sofa = new Sofa(3, 1, "Black", "leather");
-    Armchair armchair = new Armchair("Black", "leather", 1,2);
-    Computer computer = new Computer(53.2,2020);
-    Table table = new Table(3,2,"Black", "Wood");
-    TV tv = new TV(37.2);
+    Set<Furniture> furnitureSet = new HashSet<>();
+    Set<Appliances> appliancesSet = new HashSet<>();
 
 
 }
 
+class Furniture {
+    String name;
+    double height;
+    double weight;
+    double width;
+    String material;
+    String color;
+    boolean assembled;
+    static int count = 1;
 
-class Sofa {
+    public Furniture(
+            String name,
+            double height,
+            double weight,
+            double width,
+            String material,
+            String color,
+            boolean assembled) {
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.width = width;
+        this.material = material;
+        this.color = color;
+        this.assembled = assembled;
+    }
 
-    int sofaLength;
-    int sofaWidth;
-    String sofaColor;
-    String sofaCloth;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Furniture furniture = (Furniture) o;
+        return height == furniture.height &&
+                weight == furniture.weight &&
+                width == furniture.width &&
+                Objects.equals(name, furniture.name);
+    }
 
-    public Sofa(int sofaLength, int sofaWidth, String sofaColor, String sofaCloth) {
-        this.sofaLength = sofaLength;
-        this.sofaWidth = sofaWidth;
-        this.sofaColor = sofaColor;
-        this.sofaCloth = sofaCloth;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, height, weight, width);
+    }
+
+    @Override
+    public String toString() {
+        return "Furniture № " + count++ + " name: " + name + ", height = " + height
+                + ", weight = " + weight + ", width = " + width + ", material is " + material
+                + ", color is " + color + ", assembled is " + assembled;
     }
 }
 
-class Armchair {
-    String armchairColor;
-    String armchairCloth;
-    int armchairLength;
-    int armchairWidth;
+class Appliances {
+    String name;
+    double height;
+    double weight;
+    double width;
+    String color;
+    int requiredVoltage;
+    static int count = 1;
 
-    public Armchair(String armchairColor, String armchairCloth, int armchairLength, int armchairWidth) {
-        this.armchairColor = armchairColor;
-        this.armchairCloth = armchairCloth;
-        this.armchairLength = armchairLength;
-        this.armchairWidth = armchairWidth;
+
+    public Appliances(String name, double height, double weight, double width, String color, int requiredVoltage) {
+        this.name = name;
+        this.height = height;
+        this.weight = weight;
+        this.width = width;
+        this.color = color;
+        this.requiredVoltage = requiredVoltage;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Appliances that = (Appliances) o;
+        return height == that.height &&
+                weight == that.weight &&
+                width == that.width &&
+                Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, height, weight, width);
+    }
+
+    @Override
+    public String toString() {
+        return "Appliances № " + count++ + " name: " + name + ", height = " + height
+                + ", weight = " + weight + ", width = " + width +
+                ", color is " + color + ", requiredVoltage =  " + requiredVoltage;
+    }
+
 }
 
-class Table{
-    int tableLength;
-    int tableWidth;
-    String tableColor;
-    String tableMaterial;
-
-    public Table(int tableLength, int tableWidth, String tableColor, String tableMaterial) {
-        this.tableLength = tableLength;
-        this.tableWidth = tableWidth;
-        this.tableColor = tableColor;
-        this.tableMaterial = tableMaterial;
-    }
-}
-
-class Computer{
-    double monitorDiagonal;
-    int yearOfIssue;
-
-    public Computer(double monitorDiagonal, int yearOfIssue) {
-        this.monitorDiagonal = monitorDiagonal;
-        this.yearOfIssue = yearOfIssue;
-    }
-}
-
-class TV{
-    double TVDiagonal;
-
-    public TV(double TVDiagonal) {
-        this.TVDiagonal = TVDiagonal;
-    }
-}
