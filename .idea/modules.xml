@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/JMT/JMT.iml" filepath="$PROJECT_DIR$/src/JMT/JMT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/MavenTest2.iml" filepath="$PROJECT_DIR$/src/MavenTest2.iml" />
       <module fileurl="file://$PROJECT_DIR$/project_for_training.iml" filepath="$PROJECT_DIR$/project_for_training.iml" />
     </modules>
   </component>

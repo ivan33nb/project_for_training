@@ -1,5 +1,8 @@
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
         Room room = new Room(10, 7, 260, true, false, 1);
 
         room.furnitureSet.add(new Furniture(
@@ -28,22 +31,15 @@ public class Main {
                 "Yellow",
                 true)));
 
-        for (Furniture furniture : room.furnitureSet) {
-            System.out.println(furniture);
-        }
-
 
         room.appliancesSet.add(new Appliances("TV", 0.4, 0.3, 1, "Black", 220));
         room.appliancesSet.add(new Appliances("Microwave", 0.5, 0.7, 1.5, "Brown", 220));
         room.appliancesSet.add(new Appliances("Washer", 0.2, 1.3, 2.3, "Red", 220));
         room.appliancesSet.add(new Appliances("Dishwasher", 0.3, 0.2, 5, "Blue", 220));
 
-        System.out.println();
-
-        for (Appliances appliances : room.appliancesSet) {
-            System.out.println(appliances);
-        }
+        System.out.println(AddClassToJson.putOnJson(room));
+        //По сути, теперь я могу каким - то образом передать этот объект пользователю
+        //другого языка? Какой именно для это есть способ?
+        //Я решил создать отдельный метод для помещения объекта в формат JSON, подумал что так будет лучше. Правильно?
     }
-
-
 }
